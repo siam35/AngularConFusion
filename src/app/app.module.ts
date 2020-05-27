@@ -26,6 +26,10 @@ import { ContactComponent } from './contact/contact.component';
 import { PromotionService } from './services/promotion.service';
 import { LeadersService } from './services/leaders.service';
 import { LoginComponent } from './login/login.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms'; 
 
 @NgModule({
   declarations: [
@@ -49,7 +53,11 @@ import { LoginComponent } from './login/login.component';
     MatCardModule,
     MatButtonModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule, 
+    MatInputModule,
+    MatCheckboxModule,
+    FormsModule 
   ],
   entryComponents: [
     LoginComponent
