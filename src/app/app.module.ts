@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import {HttpClientModule} from '@angular/common/http';
 
 
 import 'hammerjs';
@@ -34,6 +35,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatSliderModule} from '@angular/material/slider';
+import { baseURL } from './shared/baseurl';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatToolbarModule,
     FlexLayoutModule,
     MatGridListModule,
@@ -64,13 +68,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule ,
     MatSelectModule,
     MatProgressSpinnerModule,
+    MatSliderModule,
     MatSlideToggleModule,
     ReactiveFormsModule
   ],
   entryComponents: [
     LoginComponent
 ],
-  providers: [DishService,PromotionService,LeadersService],
+  providers: [DishService,PromotionService,LeadersService,
+    {provide:'BaseURL',useValue:baseURL}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

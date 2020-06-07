@@ -13,7 +13,7 @@
           <h3 *ngIf="dish">{{dish.name | uppercase}}</h3>
         </mat-card-title>
       </mat-card-header>
-      <img mat-card-image src={{dish.image}} alt={{dish.name}}>
+      <img mat-card-image src="{{BaseURL + dish.image}}" alt={{dish.name}}>
       <mat-card-content>
         <p>{{dish.description}}
         </p>
@@ -41,11 +41,53 @@
         <span> -- {{comment.author}} {{comment.date|date : "mediumDate"}}</span>
       </p>
     </mat-list-item>
-    </mat-list>
+
+    <p>{{ feedbackForm.value.Name}}</p>
+    <p>{{ feedbackForm.value.Rating}} Star</p>
+    <p>{{ feedbackForm.value.Comment}}</p>
+    <p>{{date}}</p>
     
-  </div>
+
+    <form  novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()" >
+      <p>
+        <mat-form-field >
+          <input matInput formControlName="Name" placeholder="Name" type="text" required>
+          <mat-error *ngIf="formErrors.Name">{{formErrors.Name}}</mat-error>
+        </mat-form-field>
+        </p>
+      <mat-slider formControlName="Rating"  class="example-margin"
+      [disabled]="disabled"
+      [invert]="invert"
+      [max]="max"
+      [min]="min"
+      [step]="step"
+      [thumbLabel]="thumbLabel"
+      [tickInterval]="getSliderTickInterval()"
+      [(ngModel)]="value"
+      [vertical]="vertical"></mat-slider>
+      <p>
+        <mat-form-field >
+          <textarea matInput formControlName="Comment" placeholder="Your Comment" rows=12 required></textarea>
+          <mat-error *ngIf="formErrors.Comment">{{formErrors.Comment}}</mat-error>
+        </mat-form-field>
+
+      </p>
+      <button type="submit" mat-button class="background-primary text-floral-white" >Submit</button>
+    </form>
+
+    </mat-list>
+
+ 
+    <!-- form start -->
+   
+
+    <!-- form end -->
+
+
   <div fxFlex [hidden]="dish">
     <mat-spinner></mat-spinner> <h4>Loading...Please Wait</h4>
   </div>
+
+
 
 </div>
