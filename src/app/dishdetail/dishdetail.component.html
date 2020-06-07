@@ -36,26 +36,26 @@
       <h3>Comments</h3>
     <mat-list-item *ngFor="let comment of dish.comments">
       <h4 matLine>{{comment.comment}}</h4>
-      <p matLine>{{comment.rating}}</p>
+      <p matLine>{{comment.rating}} stars</p>
       <p matLine>
         <span> -- {{comment.author}} {{comment.date|date : "mediumDate"}}</span>
       </p>
     </mat-list-item>
 
-    <p>{{ feedbackForm.value.Name}}</p>
-    <p>{{ feedbackForm.value.Rating}} Star</p>
-    <p>{{ feedbackForm.value.Comment}}</p>
-    <p>{{date}}</p>
+    <p>{{ feedbackForm.value.author}}</p>
+    <p>{{ feedbackForm.value.rating}} Star</p>
+    <p>{{ feedbackForm.value.comment}}</p>
+    
     
 
-    <form  novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()" >
+    <form  novalidate [formGroup]="feedbackForm" #cForm="ngForm" (ngSubmit)="onSubmit()" >
       <p>
         <mat-form-field >
-          <input matInput formControlName="Name" placeholder="Name" type="text" required>
-          <mat-error *ngIf="formErrors.Name">{{formErrors.Name}}</mat-error>
+          <input matInput formControlName="author" placeholder="author" type="text" required>
+          <mat-error *ngIf="formErrors.author">{{formErrors.author}}</mat-error>
         </mat-form-field>
         </p>
-      <mat-slider formControlName="Rating"  class="example-margin"
+      <mat-slider formControlName="rating"  class="example-margin"
       [disabled]="disabled"
       [invert]="invert"
       [max]="max"
@@ -67,8 +67,8 @@
       [vertical]="vertical"></mat-slider>
       <p>
         <mat-form-field >
-          <textarea matInput formControlName="Comment" placeholder="Your Comment" rows=12 required></textarea>
-          <mat-error *ngIf="formErrors.Comment">{{formErrors.Comment}}</mat-error>
+          <textarea matInput formControlName="comment" placeholder="Your Comment" rows=12 required></textarea>
+          <mat-error *ngIf="formErrors.comment">{{formErrors.comment}}</mat-error>
         </mat-form-field>
 
       </p>
